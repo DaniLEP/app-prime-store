@@ -6,7 +6,10 @@ import App from './App.jsx'
 // router configurated 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import ErrorPage from './componentes/ErrorPage.jsx'
+import Cadastro from './pages/Auth/Register_User/Resgiter_User.jsx'
+import Login from './pages/Auth/Login/Login.jsx'
 import Home from './pages/Home.jsx'
+import ForgotPassword from './pages/Auth/Forgot_Password/Forgot_Password.jsx'
 
 const router = createBrowserRouter  ([
   {
@@ -17,7 +20,19 @@ const router = createBrowserRouter  ([
   children: [
     {
       path: '/',
+      element: <Login />
+    },
+    {
+      path: '/home',
       element: <Home />
+    },
+    {
+      path: '/register',
+      element: <Cadastro />
+    },
+    {
+      path: '/forgot-password',
+      element: <ForgotPassword />
     }
   ]
   } 
