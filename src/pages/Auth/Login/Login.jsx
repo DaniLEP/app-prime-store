@@ -21,16 +21,22 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
     setError("");
+    setIsLoading(true);
+
     try {
       await signInWithEmailAndPassword(auth, email, password);
       navigate("/home");
     } catch (error) {
       setError("Invalid email or password.");
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -41,7 +47,6 @@ const Login = () => {
   const ForgotPassword = () => {
     navigate("/forgot-password");
   };
-
 
   return (
     <div
@@ -66,7 +71,6 @@ const Login = () => {
           height: "500px",
         }}
       >
-        {/* Left Section */}
         <div
           style={{
             flex: 1,
@@ -115,7 +119,6 @@ const Login = () => {
           </div>
         </div>
 
-        {/* Right Section */}
         <div
           style={{
             flex: 1,
@@ -206,21 +209,20 @@ const Login = () => {
             <button
               type="submit"
               style={{
-                width: "100%",
+                width: "108%",
                 padding: "12px",
-                backgroundColor: "#1E3A8A",
+                backgroundColor: isLoading ? "#9CA3AF" : "#1E3A8A",
                 color: "#fff",
                 fontSize: "14px",
                 fontWeight: "600",
                 border: "none",
                 borderRadius: "8px",
-                cursor: "pointer",
+                cursor: isLoading ? "not-allowed" : "pointer",
                 marginBottom: "10px",
-                position: "relative",
-                right: "-10px",
               }}
+              disabled={isLoading}
             >
-              Sign In
+              {isLoading ? "Loading..." : "Sign In"}
             </button>
           </form>
           <div
@@ -232,7 +234,7 @@ const Login = () => {
             }}
           >
             <button
-            onClick={ForgotPassword}
+              onClick={ForgotPassword}
               style={{
                 background: "none",
                 border: "none",

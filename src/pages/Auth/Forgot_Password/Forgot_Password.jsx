@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { initializeApp } from "firebase/app";
 import { getAuth, sendPasswordResetEmail } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
@@ -34,7 +34,7 @@ const ForgotPassword = () => {
       setTimeout(() => {
         navigate("/");
       },);
-    } catch (err) {
+    } catch (error) {
       setError("Erro ao enviar o e-mail. Verifique se o endereço está correto.");
     }
   };

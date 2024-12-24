@@ -5,10 +5,10 @@ import App from './App.jsx'
 
 // router configurated 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import ErrorPage from './componentes/ErrorPage.jsx'
+import ErrorPage from './componentes/Error/index.jsx'
 import Cadastro from './pages/Auth/Register_User/Resgiter_User.jsx'
 import Login from './pages/Auth/Login/Login.jsx'
-import Home from './pages/Home.jsx'
+import Home from './pages/Home/Home.jsx'
 import ForgotPassword from './pages/Auth/Forgot_Password/Forgot_Password.jsx'
 
 const router = createBrowserRouter  ([
